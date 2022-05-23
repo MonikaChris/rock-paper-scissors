@@ -2,11 +2,12 @@
 let playing = true;
 
 //Run Game
-while(playing === true) {
+while(playing) {
     declareWinner(playerSelection(), computerSelection());
     playing = playAgain();
 }
 
+//Get player selection
 function playerSelection() {
     let input = prompt("Rock, Paper, or Scissors?");
 
@@ -58,7 +59,6 @@ function randomRoll() {
     return Math.floor(Math.random() * 3);
 }
 
-
 //Compare computer vs. user rolls and announce winner
 function declareWinner(playerRoll, computerRoll) {
     
@@ -97,10 +97,15 @@ function declareWinner(playerRoll, computerRoll) {
 
 //Ask if user would like to play again
 function playAgain() {
+    let playing = true;
     let choice = prompt("Do you want to play again?");
+    
     choice = choice.toUpperCase();
-
-    if(choice !== "YES" || choice !== "Y") {
+    
+    //Quit if user enters anything besides Yes or Y
+    if(choice !== "YES" && choice !== "Y") {
         playing = false;
     }
+    
+    return playing;
 }
