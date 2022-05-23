@@ -8,26 +8,35 @@ while(playing === true) {
 }
 
 function playerSelection() {
-    let roll = prompt("Rock, Paper, or Scissors?");
-    roll = roll.toUpperCase();
+    let input = prompt("Rock, Paper, or Scissors?");
 
-    if(roll === "ROCK" || roll === "R") {
-        return "Rock";
-    }
+    while(input !== "ROCK" || input !== "PAPER" || input !== "SCISSORS") {
+        if (input === null || input == undefined) {
+            input = prompt("Please enter Rock, Paper, or Scissors.");
+        }
 
-    else if(roll === "PAPER" || roll === "P") {
-        return "Paper";
-    }
+        else {
+            input = input.toUpperCase();
+        
+            if(input === "ROCK" || input === "R") {
+                return "Rock";
+            }
 
-    else if(roll === "SCISSORS" || roll === "S") {
-        return "Scissors";
-    }
+            else if(input === "PAPER" || input === "P") {
+                return "Paper";
+            }
 
-    else {
-        print("Choose Rock, Paper, or Scissors.")
-        playerSelection();
+            else if(input === "SCISSORS" || input === "S") {
+                return "Scissors";
+            }
+
+            else {
+                input = prompt("Please enter Rock, Paper, or Scissors.");
+            }
+        }
     }
 }
+
 
 //Computer selects Rock, Paper, or Scissors
 function computerSelection() {
