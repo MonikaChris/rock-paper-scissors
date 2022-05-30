@@ -30,13 +30,14 @@ function randomRoll() {
 
 function displayRoundWinner(player, computer) {
 
+    //Display user and computer selections
     let playerSelection = document.querySelector('#player-selection');
     let computerSelection = document.querySelector('#comp-selection');
 
     playerSelection.innerText = `You chose ${player}.`;
     computerSelection.innerText = `The computer chose ${computer}.`;
     
-
+    //Compute and display winner
     let displayBox = document.querySelector('#display-winner');
 
     //Tie Condition
@@ -70,19 +71,4 @@ function displayRoundWinner(player, computer) {
         displayBox.innerText = "Scissors beat Paper. You lose :(";
     }
     
-}
-
-//Ask if user would like to play again
-function playAgain() {
-    let playing = true;
-    let choice = prompt("Do you want to play again?");
-    
-    choice = choice.toUpperCase();
-    
-    //Quit if user enters anything besides Yes or Y
-    if(choice !== "YES" && choice !== "Y") {
-        playing = false;
-    }
-    
-    return playing;
 }
