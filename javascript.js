@@ -30,6 +30,13 @@ function randomRoll() {
 
 function displayRoundWinner(player, computer) {
 
+    let playerSelection = document.querySelector('#player-selection');
+    let computerSelection = document.querySelector('#comp-selection');
+
+    playerSelection.innerText = `You chose ${player}.`;
+    computerSelection.innerText = `The computer chose ${computer}.`;
+    
+
     let displayBox = document.querySelector('#display-winner');
 
     //Tie Condition

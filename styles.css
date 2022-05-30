@@ -2,6 +2,7 @@ body {
     background-color: rgb(119, 198, 243);
     color: rgb(230, 226, 226);
     font-family: 'Kalam', cursive;
+    font-size: 2rem;
     text-shadow: 1.5px 1.5px 0 rgb(97, 99, 122);
     text-align: center;
     display: flex;
@@ -10,16 +11,24 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: white;
     text-shadow: 2px 2px 0 rgb(97, 99, 122);
     font-family: 'Marck Script', cursive;
-    
+}
+
+h2 {
+    margin-top: 2.5rem;
+    font-size: 2.5rem;
+}
+
+.buttons {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .button {
     margin: 2rem;
-   
 }
 
 #rock {
@@ -28,17 +37,13 @@ h1 {
 
 #paper {
     width: 8.5rem;
-
 }
 
 #scissors {
     width: 10rem;
-
 }
 
-.selections {
-    display: flex;
-    
+#display-winner {
+    margin-top: 3rem;
 }
-
 
