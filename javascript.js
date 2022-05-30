@@ -1,47 +1,16 @@
-//Check if playing
-let playing = true;
+//Event listeners
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', playRound));
 
-//Run Game
-while(playing) {
-    declareWinner(playerSelection(), computerSelection());
-    playing = playAgain();
+//Run Game in response to user input
+function playRound() {
+    let playerSelection = this.textContent;
+    displayRoundWinner(playerSelection, computerSelection());   
 }
-
-//Get player selection
-function playerSelection() {
-    let input = prompt("Rock, Paper, or Scissors?");
-
-    while(input !== "ROCK" || input !== "PAPER" || input !== "SCISSORS") {
-        if (input === null || input == undefined) {
-            input = prompt("Please enter Rock, Paper, or Scissors.");
-        }
-
-        else {
-            input = input.toUpperCase();
-        
-            if(input === "ROCK" || input === "R") {
-                return "Rock";
-            }
-
-            else if(input === "PAPER" || input === "P") {
-                return "Paper";
-            }
-
-            else if(input === "SCISSORS" || input === "S") {
-                return "Scissors";
-            }
-
-            else {
-                input = prompt("Please enter Rock, Paper, or Scissors.");
-            }
-        }
-    }
-}
-
 
 //Computer selects Rock, Paper, or Scissors
 function computerSelection() {
-    compRoll = randomRoll();
+    let compRoll = randomRoll();
 
     if(compRoll === 0) {
         return "Rock";
@@ -59,38 +28,39 @@ function randomRoll() {
     return Math.floor(Math.random() * 3);
 }
 
-//Compare computer vs. user rolls and announce winner
-function declareWinner(playerRoll, computerRoll) {
-    
+function displayRoundWinner(player, computer) {
+
+    let displayBox = document.querySelector('#display-winner');
+
     //Tie Condition
-    if(playerRoll === computerRoll) {
-        window.alert("It's a tie!");
+    if(player === computer) {
+        displayBox.innerText = "It's a tie!";
     }
 
     //Player Wins    
-    else if(playerRoll === "Rock" && computerRoll === "Scissors") {
-        window.alert("Rock beats Scissors. You win!");
+    else if(player === "Rock" && computer === "Scissors") {
+        displayBox.innerText = "Rock beats Scissors. You win!";
     }
 
-    else if(playerRoll === "Paper" && computerRoll === "Rock"){
-        window.alert("Paper beats Rock. You win!");
+    else if(player === "Paper" && computer === "Rock"){
+        displayBox.innerText = "Paper beats Rock. You win!";
     }
 
-    else if(playerRoll === "Scissors" && computerRoll === "Paper"){
-        window.alert("Scissors beat Paper. You win!");
+    else if(player === "Scissors" && computer === "Paper"){
+        displayBox.innerText = "Scissors beat Paper. You win!";
     }
 
     //Computer Wins
-    else if(computerRoll === "Rock" && playerRoll === "Scissors"){
-        window.alert("Rock beats Scissors. You lose :(");
+    else if(computer === "Rock" && player === "Scissors"){
+        displayBox.innerText ="Rock beats Scissors. You lose :(";
     }
 
-    else if(computerRoll === "Paper" && playerRoll === "Rock"){
-        window.alert("Paper beats Rock. You lose :(");
+    else if(computer === "Paper" && player === "Rock"){
+        displayBox.innerText = "Paper beats Rock. You lose :(";
     }
 
-    else if(computerRoll === "Scissors" && playerRoll === "Paper"){
-        window.alert("Scissors beat Paper. You lose :(");
+    else if(computer === "Scissors" && player === "Paper"){
+        displayBox.innerText = "Scissors beat Paper. You lose :(";
     }
     
 }
