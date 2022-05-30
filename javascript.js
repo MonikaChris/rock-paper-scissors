@@ -1,10 +1,10 @@
 //Event listeners
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => button.addEventListener('click', playRound));
 
 //Run Game in response to user input
-function playRound() {
-    let playerSelection = this.textContent;
+function playRound(e) {
+    let playerSelection = e.srcElement.alt;
     displayRoundWinner(playerSelection, computerSelection());   
 }
 

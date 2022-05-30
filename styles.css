@@ -1,13 +1,39 @@
 body {
     background-color: rgb(119, 198, 243);
+    color: rgb(230, 226, 226);
+    font-family: 'Kalam', cursive;
+    text-shadow: 1.5px 1.5px 0 rgb(97, 99, 122);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.buttons {
+h1 {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 0 rgb(97, 99, 122);
+    font-family: 'Marck Script', cursive;
+    
+}
+
+.button {
     margin: 2rem;
+   
+}
+
+#rock {
+    width: 11rem;
+}
+
+#paper {
+    width: 8.5rem;
+
+}
+
+#scissors {
+    width: 10rem;
+
 }
 
 .selections {
