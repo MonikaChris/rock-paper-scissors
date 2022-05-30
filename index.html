@@ -13,20 +13,26 @@
 </head>
 <body>
     <h1>Let's Play Rock, Paper, Scissors!</h1>
-    <h2>Rock, paper, scissors, shoot:</h2>
-    <div class="buttons">
-        <input type="image" class="button" id="rock" src="./images/rock.png" alt="Rock">
-        <input type="image" class="button" id="paper" src="./images/paper.png" alt="Paper">
-        <input type="image" class="button" id="scissors" src="./images/scissors.png" alt="Scissors">
+    
+    <div class="container">
+        <h2>Rock, paper, scissors, shoot:</h2>
+        <div class="buttons">
+            <input type="image" class="button" id="rock" src="./images/rock.png" alt="Rock">
+            <input type="image" class="button" id="paper" src="./images/paper.png" alt="Paper">
+            <input type="image" class="button" id="scissors" src="./images/scissors.png" alt="Scissors">
+        </div>
+
+        <div class="selections">
+            <div id="player-selection"></div>
+            <div id="comp-selection"></div>
+        </div>
+
+        <div id="display-winner"></div>
     </div>
 
-    
-
-    <div class="selections">
-        <div id="player-selection"></div>
-        <div id="comp-selection"></div>
+    <div class="scores">
+        <div id="player-score">Player Score: 0</div>
+        <div id="comp-score">Computer Score: 0</div>
     </div>
-    
-    <div id="display-winner"></div>
 </body>
 </html>

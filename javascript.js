@@ -1,3 +1,6 @@
+let playerPoints = 0;
+let compPoints = 0;
+
 //Event listeners
 const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => button.addEventListener('click', playRound));
@@ -5,7 +8,10 @@ buttons.forEach(button => button.addEventListener('click', playRound));
 //Run Game in response to user input
 function playRound(e) {
     let playerSelection = e.srcElement.alt;
-    displayRoundWinner(playerSelection, computerSelection());   
+    
+    let winner = displayRoundWinner(playerSelection, computerSelection());
+    updateTally(winner);
+     
 }
 
 //Computer selects Rock, Paper, or Scissors
@@ -43,32 +49,58 @@ function displayRoundWinner(player, computer) {
     //Tie Condition
     if(player === computer) {
         displayBox.innerText = "It's a tie!";
+        return "Tie";
     }
 
     //Player Wins    
     else if(player === "Rock" && computer === "Scissors") {
         displayBox.innerText = "Rock beats Scissors. You win!";
+        return "Player";
     }
 
     else if(player === "Paper" && computer === "Rock"){
         displayBox.innerText = "Paper beats Rock. You win!";
+        return "Player";
     }
+    
 
     else if(player === "Scissors" && computer === "Paper"){
         displayBox.innerText = "Scissors beat Paper. You win!";
+        return "Player";
     }
+    
 
     //Computer Wins
     else if(computer === "Rock" && player === "Scissors"){
         displayBox.innerText ="Rock beats Scissors. You lose :(";
+        return "Computer";
     }
 
     else if(computer === "Paper" && player === "Rock"){
         displayBox.innerText = "Paper beats Rock. You lose :(";
+        return "Computer"
     }
 
     else if(computer === "Scissors" && player === "Paper"){
         displayBox.innerText = "Scissors beat Paper. You lose :(";
+        return "Computer"
     }
+}
+
+function updateTally(winner) {
+    let playerScore = document.querySelector("#player-score");
+    let compScore = document.querySelector("#comp-score");
     
+    if(winner === "Player") {
+        playerPoints++;
+        playerScore.innerText = `Player Score: ${playerPoints}`;
+        
+    }
+
+    else if(winner === "Computer") {
+        compPoints++;
+        compScore.innerText = `Computer Score: ${compPoints}`;
+    }
+
+    else return;
 }

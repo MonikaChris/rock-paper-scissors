@@ -1,4 +1,5 @@
 body {
+    min-height: 100vh;
     background-color: rgb(119, 198, 243);
     color: rgb(230, 226, 226);
     font-family: 'Kalam', cursive;
@@ -7,6 +8,7 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -17,14 +19,17 @@ h1 {
     font-family: 'Marck Script', cursive;
 }
 
+.container {
+    flex: 1;
+}
+
 h2 {
-    margin-top: 2.5rem;
     font-size: 2.5rem;
+    margin-top: 3rem;
 }
 
 .buttons {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .button {
@@ -44,6 +49,15 @@ h2 {
 }
 
 #display-winner {
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
+.scores {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    color: white;
+    text-shadow: 1.5px 1.5px 0 rgb(69, 134, 190);
+    font-size: 2.5rem;
+}
