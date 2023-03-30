@@ -1,5 +1,5 @@
-let playerPoints = 0;
-let compPoints = 0;
+let playerScore = 0;
+let compScore = 0;
 
 //Event listeners
 const buttons = document.querySelectorAll('.button');
@@ -7,100 +7,61 @@ buttons.forEach(button => button.addEventListener('click', playRound));
 
 //Run Game in response to user input
 function playRound(e) {
-    let playerSelection = e.srcElement.alt;
-    
-    let winner = displayRoundWinner(playerSelection, computerSelection());
-    updateTally(winner);
-     
+  const playerSelection = e.srcElement.alt;
+  const compSelection = get_compSelection();
+  displaySelections(playerSelection, compSelection);
+  const winner = getWinner(playerSelection, compSelection);
+  updateTally(winner);
 }
 
 //Computer selects Rock, Paper, or Scissors
-function computerSelection() {
-    let compRoll = randomRoll();
-
-    if(compRoll === 0) {
-        return "Rock";
-    }
-
-    else if(compRoll === 1) {
-        return "Paper";
-    }
-
-    else return "Scissors";
+function get_compSelection() {
+  const moves = ['Rock', 'Paper', 'Scissors'];
+  const index = Math.floor(Math.random() * moves.length);
+  return moves[index];
 }
 
-//Generate random integer from 0 to 2
-function randomRoll() {
-    return Math.floor(Math.random() * 3);
+function displaySelections(playerSelection, compSelection) {
+  const player = document.querySelector('#player-selection');
+  const comp = document.querySelector('#comp-selection');
+
+  player.textContent = `You chose ${playerSelection}.`;
+  comp.textContent = `The computer chose ${compSelection}.`;
 }
 
-function displayRoundWinner(player, computer) {
+function getWinner(playerSelection, compSelection) {
+  const displayBox = document.querySelector('#display-winner');
 
-    //Display user and computer selections
-    let playerSelection = document.querySelector('#player-selection');
-    let computerSelection = document.querySelector('#comp-selection');
+  if (playerSelection === compSelection) {
+    displayBox.textContent = "It's a tie!";
+    return "Tie";
+  } else if (
+    (playerSelection === 'Rock' && compSelection === 'Scissors') ||
+    (playerSelection === 'Paper' && compSelection === 'Rock') ||
+    (playerSelection === 'Scissors' && compSelection === 'Paper')
+  ) {
+    displayBox.textContent = `${playerSelection} beats ${compSelection}. You win!`;
+    return "Player";
+  } else {
+    displayBox.textContent = `${compSelection} beats ${playerSelection}. You lose :(`;
+    return "Computer";
+  }
 
-    playerSelection.innerText = `You chose ${player}.`;
-    computerSelection.innerText = `The computer chose ${computer}.`;
-    
-    //Compute and display winner
-    let displayBox = document.querySelector('#display-winner');
-
-    //Tie Condition
-    if(player === computer) {
-        displayBox.innerText = "It's a tie!";
-        return "Tie";
-    }
-
-    //Player Wins    
-    else if(player === "Rock" && computer === "Scissors") {
-        displayBox.innerText = "Rock beats Scissors. You win!";
-        return "Player";
-    }
-
-    else if(player === "Paper" && computer === "Rock"){
-        displayBox.innerText = "Paper beats Rock. You win!";
-        return "Player";
-    }
-    
-
-    else if(player === "Scissors" && computer === "Paper"){
-        displayBox.innerText = "Scissors beat Paper. You win!";
-        return "Player";
-    }
-    
-
-    //Computer Wins
-    else if(computer === "Rock" && player === "Scissors"){
-        displayBox.innerText ="Rock beats Scissors. You lose :(";
-        return "Computer";
-    }
-
-    else if(computer === "Paper" && player === "Rock"){
-        displayBox.innerText = "Paper beats Rock. You lose :(";
-        return "Computer"
-    }
-
-    else if(computer === "Scissors" && player === "Paper"){
-        displayBox.innerText = "Scissors beat Paper. You lose :(";
-        return "Computer"
-    }
 }
 
 function updateTally(winner) {
-    let playerScore = document.querySelector("#player-score");
-    let compScore = document.querySelector("#comp-score");
-    
-    if(winner === "Player") {
-        playerPoints++;
-        playerScore.innerText = `Player Score: ${playerPoints}`;
-        
-    }
+  
+  if (winner === "Player") {
+    playerScore++;
+    const playerDisplay = document.querySelector("#player-score");
+    playerDisplay.textContent = `Player Score: ${playerScore}`;
+  }
 
-    else if(winner === "Computer") {
-        compPoints++;
-        compScore.innerText = `Computer Score: ${compPoints}`;
-    }
+  else if (winner === "Computer") {
+    compScore++;
+    const compDisplay = document.querySelector("#comp-score");
+    compDisplay.textContent = `Computer Score: ${compScore}`;
+  }
 
-    else return;
+  else return;
 }
